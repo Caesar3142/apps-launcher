@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Open ParaView & Blender</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      text-align: center;
+      padding-top: 40px;
+      background-color: #fafafa;
+    }
+    button {
+      margin: 15px;
+      padding: 12px 24px;
+      font-size: 16px;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      color: white;
+    }
+    #paraviewBtn { background-color: #0078d4; }
+    #blenderBtn { background-color: #f48024; }
+  </style>
+</head>
+<body>
+  <h2>Software Launcher</h2>
+  <button id="paraviewBtn">Open ParaView</button>
+  <button id="blenderBtn">Open Blender</button>
+
+  <script>
+    const { ipcRenderer } = require('electron');
+
+    document.getElementById('paraviewBtn').addEventListener('click', () => {
+      ipcRenderer.send('open-paraview');
+    });
+
+    document.getElementById('blenderBtn').addEventListener('click', () => {
+      ipcRenderer.send('open-blender');
+    });
+  </script>
+</body>
+</html>
